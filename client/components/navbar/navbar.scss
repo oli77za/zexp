@@ -1,0 +1,20 @@
+.navbar {
+  position: absolute;
+  width: 180px;
+  height: 100%;
+  background-color: $navbar-background;
+  color: $navbar-color
+}
+
+.navbar a, a:visited {
+  color: #898AC7;
+  text-decoration: none;
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar ul li {
+  padding: 15px;
+}

@@ -1,0 +1,45 @@
+.expenses {
+  @media screen and (max-width: 420px) {
+    column-count: 1;
+  }
+  @media screen and (min-width: 421px) {
+    column-count: 2;
+  }
+  @media screen and (min-width: 871px) {
+    column-count: 3;
+  }
+  column-gap: 15px;
+  column-fill: auto;
+  height: 100%;
+  .add_button {
+    text-align: center;
+    font-style: italic;
+    .button {
+      display: block;
+    }
+  }
+  .card {
+    opacity: .7;
+  }
+  .card:hover {
+    opacity: 1;
+  }    
+}
+
+.expense_card {
+  p.description{
+    margin-bottom: 15px;
+  }
+  p.state {
+    float: left;
+    font-style: italic;
+    font-size: small;    
+  }
+  p.expense_date {
+    float: right;
+    font-style: italic;
+    font-size: small;
+  }
+}
+
+

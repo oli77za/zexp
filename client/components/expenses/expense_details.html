@@ -1,0 +1,82 @@
+<template name="ExpenseDetails">
+  <div class="expense_details">
+    <input type="text" name="name" value="{{expense.name}}" readonly="{{isSubmitted}}" />
+    <textarea class="description" name="description" readonly="{{isSubmitted}}">{{expense.description}}</textarea>
+    <div>
+      <h2>Items</h2>
+      <ul>
+	<li class="expense_items_head">
+	  <span class="date">Date</span>
+	  <span class="category">Category</span>
+	  <span class="item">Description</span>
+	  <div class="right_content">
+	    <span class="amount">Amount</span>
+	    <span class="vatRate">VAT rate</span>
+            <div class="buttons"></div>
+	  </div>
+	</li>
+        {{#each expense.items}}
+        <li class="expense_item">
+          <span class="date">{{formatDate date}}</span>
+          <span class="category">{{categoryName}}</span>
+          <span class="item">{{item}}</span>
+          <div class="right_content">
+            <span class="amount">{{amount}}</span>
+            <span class="vatRate">{{vatRate}}%</span>
+            <div class="buttons">
+              {{#unless isSubmitted}}
+              <div class="receipt_button button"><a href="{{expense._id}}/items/{{@index}}"><i class="fa fa-file"></i></a></div>
+              <div class="remove_button button" data-index="{{@index}}"><i class="fa fa-trash"></i></div>
+              {{/unless}}
+            </div>
+          </div>
+        </li>
+        {{/each}}
+        {{#unless isSubmitted}}
+        <li class="add_bar">
+          <input type="date" name="date" value="" />
+          <input type="text" name="item" placeholder="Desc..." value="" />
+          <input type="number" name="amount"  placeholder="amount" value="" />
+          <select name="category">
+            <option value=""></option>
+            {{#each categories}}
+            <option value="{{code}}">{{name}}</option>
+            {{/each}}
+          </select>
+          <input type="number" name="vat_rate"  placeholder="VAT rate" value="" />
+          <span class="add_item button"><i class="fa fa-plus"></i></span>
+        </li>
+        {{/unless}}
+      </ul>
+      {{#unless isSubmitted}}
+      <div class="save_button button">Save draft</div>
+      {{/unless}}
+    </div>
+    <div class="summary">
+      <h2>Summary</h2>
+      <div><span>VAT: </span><span>{{totalValues.vat}}</span></div>
+      <div><span>Total: </span><span>{{totalValues.amount}}</span></div>
+    </div>
+    <div class="admin">
+      <h2>Admin</h2>
+      {{#if isSubmitted }}
+      <p>Submitted on {{expense.submittedOn}}</p>
+      {{#if isApproved }}
+      <p>Approved by {{getUserName expense.approvedBy}} on {{expense.approvedOn}}</p>
+      {{#if isProcessed}}
+      <p>Processed by {{getUserName expense.processedBy}} on {{expense.processedOn}}</p>
+      <p>Transaction reference: {{expense.processReference}}</p>
+      {{else}}
+      <input type="text" placeholder="Reference" name="process_reference" />
+      <span class="button process_button">Process</span>
+      {{/if}}
+      {{else}}
+      <span class="button approve_button">Approve</span>
+      <span class="button reject_button">Reject</span>
+      {{/if}}
+      {{else}}
+      <span class="button submit_button">Submit</span>
+      {{/if}}
+    </div>
+  </div>
+</template>

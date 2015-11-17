@@ -1,0 +1,11 @@
+<template name="MainLayout">
+<body>
+	{{>Header}}
+	<div class="main_wrapper">
+	{{>NavBar}}
+	<div class="content">
+			{{>yield}}
+	</div>
+	</div>
+</body>
+</template>

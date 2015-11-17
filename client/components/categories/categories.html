@@ -1,0 +1,26 @@
+<template name="Categories">
+<div class="categories">
+  <ul>
+    {{#each categories}}
+    {{>category}}
+    {{/each}}
+  </ul>
+  <form class="new_category_form" action="">
+    <input type="text" name="code" placeholder="Code...">
+    <input type="text" name="name" placeholder="Name...">
+    <input type="number" name="vat" placeholder="VAT Rate">
+    <div class="add_button button"><i class="fa fa-plus"></i></div>
+  </form>
+</div>
+</template>
+
+<template name="category">
+<li class="category">
+<span class="code">{{code}}</span>
+<span class="name">{{name}}</span>
+<div class="right_content">
+<span class="vat">{{vat}}</span>
+<span><div class="remove_button button"><i class="fa fa-trash"></i></div></span>
+</div>
+</li>
+</template>

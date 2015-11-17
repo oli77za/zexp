@@ -1,0 +1,12 @@
+<template name="Expenses">
+  <div class="expenses">
+    {{#each expenses}}
+    {{>ExpenseCard}}
+    {{/each}}
+    <div class="add_button card">
+      <div class="card_content">
+        <div class="button"><i class="fa fa-plus">&nbsp;</i>Add</div>
+      </div>
+    </div>
+  </div>
+</template>

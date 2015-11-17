@@ -1,0 +1,14 @@
+<template name="imageupload">
+<div class="imageupload">
+  {{#if imageData}}
+  <div class="image_preview">
+    <img src="{{imageData}}" alt="">
+  </div>
+  {{else}}
+  <div class="no_image_message">No image uploaded</div>
+  {{/if}}
+  <span>
+    <input type="file" />
+  </span>
+</div>
+</template>

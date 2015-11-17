@@ -1,0 +1,10 @@
+{
+  "private": {
+    "services": {
+      "google": {
+        "clientId": "<<here you put your app clint ID>",
+        "secret": "<here you put your app secret>"
+      }
+    }
+  }
+}

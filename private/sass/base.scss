@@ -1,0 +1,126 @@
+$navbar-width-large: 180px;
+$navbar-width-medium: 30px;
+
+body: {
+  // font-family: $font-stack;
+}
+
+.main_wrapper {
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    @media screen and (max-width: 1025px) {
+      left: $navbar-width-medium;
+      width: calc(100% - $navbar-width-medium);
+    }
+    @media screen and (min-width: 1026px) {
+      left: $navbar-width-large;
+      width: calc(100% - $navbar-width-large);      
+    }
+    background-color: $content-background;
+    color: $content-color;
+    padding-bottom: 20px;
+    overflow: auto;
+    @include clearfix;
+  }
+}
+
+input, select {
+  display: inline-block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: $input-color;
+  background-color: $input-background-color;
+  background-image: none;
+  border: 1px solid $input-border-color;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  &:focus {
+    border-color: $input-border-color-focus;
+  }
+
+}
+
+.card {
+  display: inline-block;
+  // column-break-inside: avoid;
+  width: 80%;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.15);
+  border: rgba(0,0,0,0.1) solid 1px;
+  transition: opacity .4s ease;
+  opacity: .8;
+  > .card_content > h2 {
+    margin: 0 5px 20px 5px;
+    border-bottom: rgba(0,0,0,0.2) solid 1px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  background-color: $button-background-color;
+  padding: 5px;
+  border-color: $button-border-color;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0;
+  opacity: .8;
+  transition: opacity .3s ease;
+  a {
+    color: $content-color;
+    &:visited {
+      color: $content-color;
+    }
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    background-color: $button-background-color-active;
+  }
+  &.disabled {
+    color: grey;
+    opacity: .8;
+  }
+}
+
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    size: auto;
+  }
+  .main_wrapper {
+    .navbar {
+      display: none;
+    }
+    .content {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      background-color: #fff;
+      color: #000;    
+    }
+  }
+  @page {
+    size: auto;   /* auto is the initial value */
+  }
+}
+

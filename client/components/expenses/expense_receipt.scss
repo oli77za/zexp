@@ -1,0 +1,10 @@
+.expense_receipt {
+  img {
+    padding: 10px;
+    max-width: calc(100% - 20px);
+  }
+  >.loading {
+    text-align: center;
+    padding: 130px 0;
+  }
+}

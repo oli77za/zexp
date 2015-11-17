@@ -1,0 +1,28 @@
+.header {
+	width: 100%;
+	height: $header-height;
+	background-color: $header-background;
+	clear: both;
+  @media screen {
+    display: block;
+  }
+  @media print {
+    visibility: hidden;
+  }
+}
+
+.header ul {
+	display: inline-block;
+	list-style: none;
+}
+
+.header ul.right {
+	float: right;
+}
+
+.header ul li {
+}
+
+.header .logo {
+	background-color: blue;
+}
