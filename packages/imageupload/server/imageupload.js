@@ -1,16 +1,14 @@
 Meteor.methods({
   'uploadImage': function(imageId, imageData) {
-    if (imageId == null) {
-      console.log('Inserting new image');
-      return Images.insert({
-	data: imageData
-      });
-    } else {
-      console.log('Updating existing image');
-      return Image.update({
-	data: imageData
-      });
+    if (imageId != null) {
+      Images.remove({_id: imageId});
     }
+    return Images.insert({
+      data: imageData
+    });
+  },
+  'removeImage': function(imageId) {
+    Images.remove({_id: imageId});
   }
 });
 

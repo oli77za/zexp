@@ -78,6 +78,7 @@ Template.ExpenseDetails.events({
   },
   'click .expense_item .remove_button': function(event) {
     var expense = Expenses.findOne(Router.current().params.id);
+    ImageUpload.removeImage(expense.items[event.currentTarget.dataset.index].imageId);
     expense.items.splice(event.currentTarget.dataset.index, 1);
     Expenses.update({
       _id: Router.current().params.id
@@ -89,7 +90,6 @@ Template.ExpenseDetails.events({
   },
   'click .add_item': function(event, template) {
     var expense = Expenses.findOne(Router.current().params.id);
-    console.log(Router.current().params.id, expense);
     var itemDate = $(event.currentTarget).parent().find('input[name="date"]').val();
     var date = itemDate !== '' ? new Date(itemDate) : null;
     if (expense.items === undefined) {
@@ -101,7 +101,7 @@ Template.ExpenseDetails.events({
       'amount': Number.parseFloat($(event.currentTarget).parent().find('input[name="amount"]').val()),
       'vatRate': Number.parseFloat($(event.currentTarget).parent().find('input[name="vat_rate"]').val()),
       categoryCode : $('select[name="category"]').val(),
-      categoryName : $('select[name="category"]').text()
+      categoryName : $('select[name="category"] option:selected').text()
     });
     Expenses.update({
       _id: Router.current().params.id

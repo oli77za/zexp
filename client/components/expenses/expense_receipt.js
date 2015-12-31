@@ -3,8 +3,8 @@ Template.expense_receipt.onCreated(function () {
   this.autorun(function() {
     var imageId = ImageUpload.imageId();
     var expense = Expenses.findOne({_id: Template.currentData().expenseId});
-    if (expense && imageId && expense.items[Template.currentData().itemIndex].imageId != imageId) {
-      console.log(expense);
+    var itemIndex = Template.currentData().itemIndex;
+    if (expense && imageId && expense.items[itemIndex].imageId != imageId) {
       var items = expense.items;
       items[Template.currentData().itemIndex].imageId = imageId;
       Expenses.update({_id: expense._id}, {$set: {
@@ -16,6 +16,7 @@ Template.expense_receipt.onCreated(function () {
 
 Template.expense_receipt.helpers({
   'imageId': function() {
-    return ImageUpload.imageId();
+    var expense = Expenses.findOne({_id: Template.currentData().expenseId});
+    return expense ? expense.items[Template.currentData().itemIndex].imageId : null;
   }
 });
