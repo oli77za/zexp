@@ -78,5 +78,15 @@
       <span class="button submit_button">Submit</span>
       {{/if}}
     </div>
+    <div class="image_gallery">
+      {{#each expense.items}}
+      {{#if imageId}}
+      <div class="image">
+	<img src="/expenses/{{expense._id}}/items/{{@index}}/image" />
+	<p>{{item}}</p>
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
   </div>
 </template>
