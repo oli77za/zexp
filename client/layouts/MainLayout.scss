@@ -1,0 +1,29 @@
+@import "../sass/variables.scss";
+
+$navbar-width-large: 180px;
+$navbar-width-medium: 30px;
+
+.main_layout {
+    height: 100%;
+    background-color: $content-background;
+    color: $content-color;
+    overflow: auto;
+    .left_column {
+        display: inline-block;
+        float: left;
+        height: 100%;
+        @media screen and (max-width: 719px) {
+            width: $navbar-width-medium;
+        }
+        @media screen and (min-width: 720px) {
+            width: $navbar-width-large;
+        }
+        @media print {
+            display: none;
+        }
+    }
+    .content {
+        overflow: hidden;
+    }
+}
+

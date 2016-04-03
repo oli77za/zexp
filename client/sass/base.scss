@@ -1,36 +1,9 @@
-$navbar-width-large: 180px;
-$navbar-width-medium: 30px;
+@import "./mixins.scss";
+@import "./variables.scss";
+@import "./colors.scss";
 
-body: {
-  // font-family: $font-stack;
-}
-
-.main_wrapper {
-  position: absolute;
-  top: $header-height;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  .content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    @media screen and (max-width: 1025px) {
-      left: $navbar-width-medium;
-      width: calc(100% - $navbar-width-medium);
-    }
-    @media screen and (min-width: 1026px) {
-      left: $navbar-width-large;
-      width: calc(100% - $navbar-width-large);      
-    }
-    background-color: $content-background;
-    color: $content-color;
-    padding-bottom: 20px;
-    overflow: auto;
-    @include clearfix;
-  }
+html, body {
+    height: 100%;
 }
 
 input, select {

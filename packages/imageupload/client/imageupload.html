@@ -1,6 +1,5 @@
 <template name="imageupload">
 <div class="imageupload">
-  <span>DEBUG - {{imageId}}</span>
   {{#if imageData}}
   <div class="image_preview">
     <img src="{{imageData}}" alt="">
@@ -8,8 +7,9 @@
   {{else}}
   <div class="no_image_message">No image uploaded</div>
   {{/if}}
-  <span>
+  <div>
     <input type="file" />
-  </span>
+    <button class="save_button">Save</button>
+  </div>
 </div>
 </template>
