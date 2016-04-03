@@ -46,7 +46,7 @@ Router.route('/expenses', {
 });
 
 Router.route('/expenses/:id', {
-    name: "expense_deatils",
+    name: "expense_details",
     layoutTemplate: 'MainLayout',
     action: function() {
         this.render('ExpenseDetails');

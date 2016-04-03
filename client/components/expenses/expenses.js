@@ -41,7 +41,7 @@ Template.ExpenseCard.helpers({
 
 Template.ExpenseCard.events({
   'click': function() {
-    Router.go('expense_deatils', {
+    Router.go('expense_details', {
       id: this._id
     });
   }

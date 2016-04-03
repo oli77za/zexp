@@ -16,8 +16,8 @@ Package.onUse(function(api) {
   api.use('mongo', ['client', 'server']);
   api.addFiles(['collections.js']);
   api.addFiles(['server/imageupload.js'], 'server');
-  api.addFiles(['client/imageupload.html', 'client/imageupload.js'], 'client');
-  api.export('ImageUpload', ['client', 'server']);
+  api.addFiles(['client/imageupload.html', 'client/imageupload.js', 'client/api.js'], 'client');
+  api.export('ImageUpload');
 });
 
 Package.onTest(function(api) {

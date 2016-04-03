@@ -15,19 +15,20 @@ Template.expense_receipt.helpers({
         var template = Template.instance();
         return {
             imageId: template.item.imageId,
-            imageSavedCallback: function(imageId) {
+            imageSavedCallback: function(image) {
                 var itemIndex = template.data.itemIndex;
-                template.item.imageId = imageId;
+                template.item.imageId = image._id;
                 Expenses.update(
                     {
                         _id : template.expense._id
                     },
-                    { 
+                    {
                         $set: {
                             'items': template.expense.items
                         }
                     }
                 );
+                Router.go('expense_details', {id: template.data.expenseId});
             }
         };
     },
@@ -35,3 +36,10 @@ Template.expense_receipt.helpers({
         return Template.instance().item.imageId;
     }
 });
+
+Template.expense_receipt.events({
+    'click .back_btn': function(event, template) {
+        Router.go('expense_details', {id: template.data.expenseId});
+    }
+});
+

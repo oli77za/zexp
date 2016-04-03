@@ -1,22 +1,39 @@
 @import "../../sass/variables.scss";
 
 .navbar {
-  width: 180px;
-  height: 100%;
-  background-color: $navbar-background;
-  color: $navbar-color
-}
+    height: 100%;
+    background-color: $navbar-background;
+    color: $navbar-color;
+    li {
+        padding: 15px;
+    }
 
-.navbar a, a:visited {
-  color: #898AC7;
-  text-decoration: none;
-}
+    a, a:visited {
+        color: #898AC7;
+        text-decoration: none;
+    }
 
-.navbar ul {
-  list-style: none;
-  margin: 0;
-}
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 
-.navbar ul li {
-  padding: 15px;
+    @media screen and (max-width: 719px) {
+        width: 50px;
+        ul {
+            margin: 0;
+        }
+        span {
+            display: none;
+        }
+    }
+    @media screen and (min-width: 720px) {
+        width: 180px;
+        ul {
+            margin: 0 0 0 40px;
+        }
+    }
+    @media print {
+        display: none;
+    }
 }

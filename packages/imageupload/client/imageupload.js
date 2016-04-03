@@ -1,22 +1,23 @@
-
-
 Template.imageupload.onCreated(function() {
     var self = this;
-    this.imagePreview = new ReactiveVar();
+    this.image = new ReactiveVar({});
     if(this.data.imageId) {
         self.subscribe("image", this.data.imageId);
     }
     this.autorun(function() {
         var image = Images.findOne({_id: self.data.imageId});
         if (image) {
-            self.imagePreview.set(image.data);
+            self.image.set(image);
         }
     });
 });
 
 Template.imageupload.helpers({
     imageData: function() {
-        return "data:image/jpeg;base64," +_arrayBufferToBase64(Template.instance().imagePreview.get());
+        var image= Template.instance().image.get();
+        if (image && image.data) {
+            return "data:image/jpeg;base64," +_arrayBufferToBase64(image.data);
+        }
     }
 });
 
@@ -29,34 +30,35 @@ Template.imageupload.events({
         }
         var fileReader = new FileReader();
         fileReader.onload = function(readerEvent) {
-            template.imagePreview.set(readerEvent.target.result);
+            var image = template.image.get();
+            image.data = new Uint8Array(readerEvent.target.result);
+            template.image.set(image);
         };
         fileReader.readAsArrayBuffer(file);
     },
     'click .save_button': function(event, template) {
+        var image = template.image.get();
         Meteor.call('uploadImage',
-                    template.data.imageId,
-                    new Uint8Array(template.imagePreview.get()),
+                    image,
                     function(error, result) {
                         if (error) {
                             console.log(error);
                             alert("Failed to upload image");
                         } else {
-                            template.data.imageSavedCallback(result);
+                            image._id = result;
+                            template.image.set(image);
+                            template.data.imageSavedCallback(image);
                         }
                     });
     }
 });
 
-function _arrayBufferToBase64( buffer ) {
+function _arrayBufferToBase64( bytes ) {
     var binary = '';
-    var bytes = new Uint8Array( buffer );
     var len = bytes.byteLength;
     for (var i = 0; i < len; i++) {
         binary += String.fromCharCode( bytes[ i ] );
     }
     return window.btoa( binary );
 }
-function imageBytesToString ( imageByteBuffer) {
-    var imageString = "data:image/jpeg;base64," + btoa(String.fromCharCode.apply(null, imageByteBuffer));
-}
+

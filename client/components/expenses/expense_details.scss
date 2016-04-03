@@ -3,133 +3,134 @@
 @import "../../sass/colors.scss";
 
 .expense_details{
-  >input[name='name'] {
-    display: block;
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 0;
-    border-bottom: grey solid 1px;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-    font-size: 2em;
-    text-align: left;
-    font-weight: bold;
-  }
-  >textarea[name="description"] {
-    color: #282AB5;    
-    width: 100%;
-    min-height: 100px;
-    border: 0;
-    border-bottom: grey solid 1px;
-    border-radius: 0;
-    background: none;
-  }
-
-  li.expense_items_head {
-    border: 0;
-    font-weight: bold;
-  }
-  li {
-    @include clearfix;
-    > span.date {
-      float: left;
-      width: 100px;
-    }
-    > span.category {
-      width: 100px;
-      display: inline-block;
-    }
-    > span.item {
-      overflow: hidden;
-    }
-    > .right_content {
-      display: inline-block;
-      float: right;        
-      > .amount, .vatRate {
-        display: inline-block;
-        width: 80px;
-      }
-      > .buttons {
-        width: 60px;
-        display: inline-block;
-      }
-    }    
-  }
-
-  @media screen {
-    padding: 20px;
     >input[name='name'] {
-      color: #282AB5;
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        border: 0;
+        border-bottom: grey solid 1px;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+        font-size: 2em;
+        text-align: left;
+        font-weight: bold;
     }
     >textarea[name="description"] {
-      color: #282AB5;    
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      overflow: visible;
-    }
-    li {
-      padding: 10px;
-      width: calc(100% - 20px);
-      border: purple solid 1px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      background-color: rgba(255,255,255,.3);
-      &.add_bar {
-        > input[name="date"] {width: 150px;}
-        > input[name="item"] {width: calc(100% - 650px); min-width: 100px;}
-        > input[name="amount"] {width: 50px;}
-        > input[name="vat_rate"] {width: 50px;}
+        color: #282AB5;
+        width: 100%;
+        min-height: 100px;
         border: 0;
-        background-color: initial;
-        text-align: center;
-	a, a:visited {
-	  color: #282AB5;
-	}
-      }
+        border-bottom: grey solid 1px;
+        border-radius: 0;
+        background: none;
     }
-    .image_gallery {
-      display: none;
-    }
-  }
 
-  @media print {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    * {
-      color: black;
-    }
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    >textarea[name="description"],>input[name='name'] {
-      background-color: none;
-      color: black;      
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      > .add_bar {
-        display: none;
-      }
+    li.expense_items_head {
+        border: 0;
+        font-weight: bold;
     }
     li {
-      > .right_content > .buttons {
-	width: 0px;
-        display: none;
-      }
+        @include clearfix;
+        > span.date {
+            float: left;
+            width: 100px;
+        }
+        > span.category {
+            width: 100px;
+            display: inline-block;
+        }
+        > span.item {
+            overflow: hidden;
+        }
+        > .right_content {
+            display: inline-block;
+            float: right;
+            > .amount, .vatRate {
+                display: inline-block;
+                width: 80px;
+            }
+            > .buttons {
+                width: 60px;
+                display: inline-block;
+            }
+        }
     }
-    .button {
-      display: none;
-      visibility: hidden;
-    }
-  }
 
-}
+    @media screen {
+        padding: 20px;
+        >input[name='name'] {
+            color: #282AB5;
+        }
+        >textarea[name="description"] {
+            color: #282AB5;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            overflow: visible;
+        }
+        li {
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: purple solid 1px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: rgba(255,255,255,.3);
+            &.add_bar {
+                > input[name="date"] {width: 150px;}
+                > input[name="item"] {width: calc(100% - 650px); min-width: 100px;}
+                > input[name="amount"] {width: 50px;}
+                > input[name="vat_rate"] {width: 50px;}
+                border: 0;
+                background-color: initial;
+                text-align: center;
+                a, a:visited {
+                    color: #282AB5;
+                }
+            }
+        }
+        .image_gallery {
+            display: none;
+        }
+    }
+
+    @media print {
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+               * {
+                   color: black;
+               }
+               background-color: white;
+               margin: 0;
+               padding: 0;
+               >textarea[name="description"],>input[name='name'] {
+                   background-color: none;
+                   color: black;
+               }
+               ul {
+                   list-style: none;
+                   padding: 0;
+                   > .add_bar {
+                       display: none;
+                   }
+               }
+               li {
+                   > .right_content > .buttons {
+                       width: 0px;
+                       display: none;
+                   }
+               }
+               .button {
+                   display: none;
+                   visibility: hidden;
+               }
+           }
+
+       }
