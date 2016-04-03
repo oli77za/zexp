@@ -8,6 +8,7 @@ html, body {
 
 input, select {
   display: inline-block;
+  box-sizing: content-box;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -46,7 +47,9 @@ input, select {
 
 .button {
   display: inline-block;
+  padding: 8px;
   cursor: pointer;
+  color: $button-color;
   background-color: $button-background-color;
   padding: 5px;
   border-color: $button-border-color;
@@ -55,9 +58,9 @@ input, select {
   opacity: .8;
   transition: opacity .3s ease;
   a {
-    color: $content-color;
+    color: $button-color;
     &:visited {
-      color: $content-color;
+      color: $button-color;
     }
   }
   &:hover {

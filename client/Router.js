@@ -16,6 +16,16 @@ Router.route('/', {
     }
 });
 
+Router.route('/logout', {
+    onBeforeAction: function() {
+        if (!!Meteor.userId()) {
+            Meteor.logout();
+        }
+        Router.go('home');
+        this.next();
+    }
+});
+
 Router.route('/my_expenses', {
     name: "my_expenses",
     layoutTemplate: 'MainLayout',

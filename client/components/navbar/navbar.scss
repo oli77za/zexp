@@ -2,14 +2,20 @@
 
 .navbar {
     height: 100%;
-    background-color: $navbar-background;
-    color: $navbar-color;
+    border-right: #CCC solid 1px;
+    .logo_area {
+        padding: 40px 0;
+        text-align: center;
+        img {
+            width: 80%;
+        }
+    }
     li {
         padding: 15px;
     }
 
     a, a:visited {
-        color: #898AC7;
+        color: #4D62AE;
         text-decoration: none;
     }
 
