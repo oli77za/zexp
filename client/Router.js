@@ -7,8 +7,7 @@ Router.onBeforeAction(function() {
 
 Router.route('/', {
     name: "home",
-    template: 'Home',
-    layoutTemplate: 'MainLayout',
+    template: 'homepage',
     onBeforeAction: function() {
         if (!!Meteor.userId()) {
             Router.go('my_expenses');
